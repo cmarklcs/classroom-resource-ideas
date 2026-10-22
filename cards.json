@@ -1,0 +1,106 @@
+[
+  {
+    "title": "A monthly class calendar that knows the special-class rotation",
+    "need": "Lower School classrooms wanted a one-page monthly calendar that shows which special class each day falls on.",
+    "built": "A calendar builder with the Lausanne rotation built in. Add your name, classes, birthdays and events, then choose color or black and white.",
+    "url": "https://claude.ai/code/artifact/e197d624-3d55-4a05-a612-9d111d3b1995",
+    "image": "",
+    "order": 1
+  },
+  {
+    "title": "A weekly agenda you write once and paste into Toddle",
+    "need": "Teachers were retyping the same class plans into Toddle posts, with days, periods and times to look up each week.",
+    "built": "The Lausanne Weekly Agenda: pick your division and periods, write each class meeting once, and the rotation days and times fill in. Mark days a class does not meet, then copy the finished text for a Toddle post.",
+    "url": "https://cmarklcs.github.io/lausanne-calendar/agenda/",
+    "image": "images/weekly-agenda.jpg",
+    "order": 1.5
+  },
+  {
+    "title": "Name sheets that teach letters on the Chromebook keyboard",
+    "need": "Young students needed practice finding the letters of their own name on a Chromebook keyboard.",
+    "built": "A generator that makes one page per student: the name to trace, a keyboard to color in key by key, and a line for the Chromebook number.",
+    "url": "https://claude.ai/code/artifact/c0582937-fb5f-4dbc-b5b6-b0bbaa82f170",
+    "image": "",
+    "order": 2
+  },
+  {
+    "title": "A Little Lynx Computer Lab for Senior Kindergarten",
+    "need": "Senior Kindergarten students had never used a Chromebook, and teachers wanted a ready plan.",
+    "built": "A student site with a card for each of the six weeks, from Hello, Chromebook! to Share and Celebrate!, each with short activities students play through. A link to the teacher guide sits underneath.",
+    "url": "https://cmarklcs.github.io/sk-chromebook-lab/",
+    "image": "images/sk-chromebook-lab.jpg",
+    "order": 3
+  },
+  {
+    "title": "A picture-based research library for first graders",
+    "need": "First graders researching animals and plants needed safe, readable sources they could cite.",
+    "built": "Picture cards by animal, plant and habitat with read-aloud buttons, vocabulary, credited photos, video and Epic book links, and copy-ready citations.",
+    "url": "https://claude.ai/code/artifact/b61cc28b-2f83-46ba-99e8-b2c8519a0448",
+    "image": "",
+    "order": 4
+  },
+  {
+    "title": "A \"what color day is it?\" schedule for students",
+    "need": "Students kept losing track of which classes fall on which day of the rotating color schedule.",
+    "built": "Pick a color day to see classes in order with teachers and rooms, or view the whole week. Students can edit it and save a picture of their schedule.",
+    "url": "https://claude.ai/code/artifact/a08fce1b-d986-4b2f-a6df-590ca5c58138",
+    "image": "",
+    "order": 5
+  },
+  {
+    "title": "A pretend grocery store for reading nutrition labels",
+    "need": "A 7th grade nutrition project needed realistic food labels to read, without using real brands or real people's data.",
+    "built": "Lynx Market, a made-up grocery store where students browse aisles, flip packages to read their Nutrition Facts labels, and use meal logs, a shopping cart and a Maya's Week section. Teachers can print label cards.",
+    "url": "https://cmarklcs.github.io/lynx-market/",
+    "image": "images/lynx-market.jpg",
+    "order": 6
+  },
+  {
+    "title": "A Flex Period sign-up system built around teacher feedback",
+    "need": "Microsoft Bookings made Flex sign-ups clunky: teachers could not see their roster and it did not fit advisories.",
+    "built": "Flex Bookings, a site where teachers see each teacher's open spots by day and book students in. It includes My bookings, My roster, My advisees, sign-ups and admin controls, and it uses your Lausanne Microsoft sign-in.",
+    "url": "https://flex-web-production.up.railway.app/",
+    "image": "images/flex-bookings.jpg",
+    "order": 7
+  },
+  {
+    "title": "Printable grade detail pages from a Toddle export",
+    "need": "Toddle does not print a per-student grade page the way Veracross used to.",
+    "built": "Drop in a Toddle gradebook export, pick students, and print or save a page for each one. Everything runs in your browser.",
+    "url": "https://claude.ai/code/artifact/04a2ff5e-0da5-480e-9eb6-10f37bc32c83",
+    "image": "",
+    "order": 8
+  },
+  {
+    "title": "A one-page guide to Toddle notification settings for families",
+    "need": "Families were getting more Toddle email than they wanted and did not know where to change it.",
+    "built": "A branded handout with numbered steps for the web and the mobile app, screenshots, and an email troubleshooting note.",
+    "url": "https://claude.ai/code/artifact/24e9684d-f1ff-4edd-9afd-303a0c2754c1",
+    "image": "",
+    "order": 9
+  },
+  {
+    "title": "MYP rubric level to percentage and letter grade",
+    "need": "Teachers entering MYP summative grades in Toddle needed a quick conversion chart.",
+    "built": "A one-page chart that maps each rubric level, 8 down to 0, to a percentage and a letter grade.",
+    "url": "https://claude.ai/code/artifact/60733589-f160-4ffb-aa52-10e9975cf398",
+    "image": "",
+    "order": 10
+  },
+  {
+    "title": "An eight-week mock trial pre-season plan",
+    "need": "Students needed to learn how a trial works before the new case was released, so practice time could go to strategy.",
+    "built": "Sixteen practices in four phases, each with a warm-up, skill block, application and debrief, plus a drill bank and resources.",
+    "url": "https://claude.ai/code/artifact/bebef048-e97b-47f3-89f4-f5efa02ddac3",
+    "image": "",
+    "order": 11
+  },
+  {
+    "title": "A deck for the first four mock trial practices",
+    "need": "Coaches needed slides and speaker notes for roles, trial order and courtroom decorum.",
+    "built": "Twenty slides with speaker notes, a relay game, a practice case and glow-and-grow feedback prompts.",
+    "url": "https://claude.ai/code/artifact/3e22caff-9118-44fd-a995-87fe9a26df12",
+    "image": "",
+    "order": 12
+  }
+]
