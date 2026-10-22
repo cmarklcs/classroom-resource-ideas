@@ -94,13 +94,5 @@
     "url": "https://claude.ai/code/artifact/bebef048-e97b-47f3-89f4-f5efa02ddac3",
     "image": "",
     "order": 11
-  },
-  {
-    "title": "A deck for the first four mock trial practices",
-    "need": "Coaches needed slides and speaker notes for roles, trial order and courtroom decorum.",
-    "built": "Twenty slides with speaker notes, a relay game, a practice case and glow-and-grow feedback prompts.",
-    "url": "https://claude.ai/code/artifact/3e22caff-9118-44fd-a995-87fe9a26df12",
-    "image": "",
-    "order": 12
   }
 ]
