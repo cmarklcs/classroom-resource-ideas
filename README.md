@@ -10,11 +10,11 @@ Plain HTML, CSS and JavaScript. No framework and no build step. `app.js` reads `
 
 | File | What it does |
 | --- | --- |
-| `index.html` | Page structure: header, card grid, closing section |
+| `index.html` | Page structure: header, ideas section, card grid, closing section. Edit the ideas list here. |
 | `styles.css` | Lausanne colors, fonts, layout, dark mode |
 | `app.js` | Loads `cards.json` and renders the cards |
 | `cards.json` | The list of cards. This is the only file you edit to change cards. |
-| `images/` | Preview images (JPEG, about 1200px wide) |
+| `images/` | Preview images (JPEG, all 960×600) |
 
 ## Card fields
 
@@ -44,7 +44,7 @@ Each card in `cards.json` looks like this:
 ## Add or replace a preview image
 
 1. Take a screenshot of the page (a wide browser window works best; the card shows the top of the image in a 16:10 frame).
-2. Save it as a JPEG about 1200px wide, named after the page, for example `toddle-notifications.jpg`.
+2. Save it as a JPEG, cropped or resized to exactly 960×600 so it matches the other previews, named after the page, for example `toddle-notifications.jpg`.
 3. On GitHub, open the `images` folder, choose **Add file > Upload files**, and upload it.
 4. In `cards.json`, set that card's `"image"` to `"images/toddle-notifications.jpg"` and commit.
 
