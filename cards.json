@@ -44,7 +44,7 @@
     "need": "Students kept losing track of which classes fall on which day of the rotating color schedule.",
     "built": "Pick a color day to see classes in order with teachers and rooms, or view the whole week. Students can edit it and save a picture of their schedule.",
     "url": "https://claude.ai/code/artifact/a08fce1b-d986-4b2f-a6df-590ca5c58138",
-    "image": "",
+    "image": "images/color-day-schedule.jpg",
     "order": 5
   },
   {
