@@ -68,7 +68,7 @@
     "need": "Toddle does not print a per-student grade page the way Veracross used to.",
     "built": "Drop in a Toddle gradebook export, pick students, and print or save a page for each one. Everything runs in your browser.",
     "url": "https://claude.ai/code/artifact/04a2ff5e-0da5-480e-9eb6-10f37bc32c83",
-    "image": "",
+    "image": "images/grade-detail-pages.jpg",
     "order": 8
   },
   {
