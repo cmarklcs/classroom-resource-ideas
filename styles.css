@@ -14,22 +14,6 @@
   --shadow: 0 1px 2px rgba(0, 39, 76, 0.06), 0 4px 14px rgba(0, 39, 76, 0.06);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #07192c;
-    --surface: #0d2845;
-    --text: #e6edf5;
-    --muted: #a7b6c6;
-    --border: #23405f;
-    --heading: #ffffff;
-    --link: var(--gold);
-    --need-bg: #2e2a12;
-    --need-text: #ffe17a;
-    --placeholder-bg: #12324f;
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 14px rgba(0, 0, 0, 0.25);
-  }
-}
-
 *, *::before, *::after { box-sizing: border-box; }
 
 html { -webkit-text-size-adjust: 100%; }
@@ -290,8 +274,4 @@ h1 {
   margin: 0;
   max-width: 64ch;
   font-size: 1.05rem;
-}
-
-@media (prefers-color-scheme: dark) {
-  .closing { background: var(--surface); border: 1px solid var(--border); border-top: 5px solid var(--gold); }
 }

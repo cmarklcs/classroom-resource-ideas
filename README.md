@@ -11,7 +11,7 @@ Plain HTML, CSS and JavaScript. No framework and no build step. `app.js` reads `
 | File | What it does |
 | --- | --- |
 | `index.html` | Page structure: header, ideas section, card grid, closing section. Edit the ideas list here. |
-| `styles.css` | Lausanne colors, fonts, layout, dark mode |
+| `styles.css` | Lausanne colors, fonts and layout |
 | `app.js` | Loads `cards.json` and renders the cards |
 | `cards.json` | The list of cards. This is the only file you edit to change cards. |
 | `images/` | Preview images (JPEG, all 960×600) |
