@@ -1,0 +1,603 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Concert Closet</title><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@500;700;800&display=swap">
+<style>
+/* Layout: a theatre stage (student in a spotlight) beside a wardrobe closet, under a curtain valance. Single warm theme on purpose. */
+:root{
+  --curtain:#6E1A26; --curtain-deep:#43101A; --stage:#24140F; --wood:#8B5A32; --wood-light:#A8733F;
+  --paper:#FBF4E3; --paper-2:#F2E5C8; --ink:#2B1D14; --muted:#6F5C4B; --line:#E0CFAE;
+  --accent:#C2541A; --gold:#D4A017; --good:#2F7A3A; --bad:#B3261E; --white:#FFFDF7;
+  --display:"Baloo 2","Trebuchet MS",system-ui,sans-serif;
+  --body:"Nunito","Segoe UI",system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{background:var(--stage)}
+body{font-family:var(--body);color:var(--ink);font-size:16px;line-height:1.45;min-height:100vh}
+button{font-family:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+
+/* header valance */
+.valance{background:linear-gradient(180deg,var(--curtain-deep),var(--curtain));position:relative;padding-block:14px 26px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.valance::after{content:"";position:absolute;left:0;right:0;bottom:-14px;height:16px;
+  background:radial-gradient(circle at 18px 0,var(--curtain) 17px,transparent 18px) 0 0/36px 16px repeat-x}
+.hwrap{max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.eyebrow{font-size:.74rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase}
+.valance .eyebrow{color:#F1C77A}
+h1{font-family:var(--display);font-weight:800;color:var(--white);font-size:clamp(2rem,5vw,3rem);line-height:1;margin:2px 0 0;letter-spacing:.01em}
+.hud{display:flex;gap:8px;align-items:center}
+.pill{background:rgba(0,0,0,.28);color:var(--white);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:6px 14px;font-weight:800;font-size:.95rem}
+.pill .star{color:var(--gold)}
+
+main{max-width:1180px;margin:0 auto;padding-block:30px 40px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+
+.panel{background:var(--paper);border-radius:18px;padding:20px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+h2,h3,h4{font-family:var(--display);margin:0;line-height:1.1;text-wrap:balance}
+h2{font-size:1.9rem}
+h3{font-size:1.35rem}
+h4{font-size:1.05rem;margin-top:14px;margin-bottom:6px}
+
+/* dress code card */
+.memo{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:10px 0 0;font-size:.95rem}
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(98px,1fr));gap:6px}
+.sw{display:flex;align-items:center;gap:6px;font-size:.82rem;font-weight:700}
+.sw i{width:20px;height:20px;border-radius:6px;flex:none;border:1px solid rgba(0,0,0,.15)}
+.wear{margin:0;padding-left:18px;font-size:.93rem}
+.wear li{margin-bottom:3px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:#F7DCD6;color:#7E1A12;border-radius:999px;padding:3px 10px;font-weight:800;font-size:.82rem}
+.small{font-size:.85rem;color:var(--muted);margin:6px 0 0}
+
+/* start */
+.start{display:grid;grid-template-columns:1.1fr 1fr;gap:22px;align-items:start}
+.start .lead{font-size:1.1rem;margin:10px 0 0}
+.steps{display:grid;gap:10px;margin:18px 0}
+.step{display:flex;gap:12px;align-items:flex-start}
+.step b.n{flex:none;width:32px;height:32px;border-radius:50%;background:var(--accent);color:var(--white);display:grid;place-items:center;font-family:var(--display);font-size:1.1rem}
+label.lbl{font-weight:800;display:block;margin:6px 0 6px}
+.namebox{display:flex;gap:10px;flex-wrap:wrap}
+input[type=text]{font:inherit;font-size:1.1rem;padding:10px 14px;border-radius:12px;border:2px solid var(--line);background:var(--white);color:var(--ink);flex:1;min-width:0}
+.btn{border:0;border-radius:14px;padding:12px 22px;font-weight:800;font-size:1.1rem;background:var(--accent);color:var(--white);box-shadow:0 4px 0 #7D3410;transition:transform .08s}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 #7D3410}
+.btn.green{background:var(--good);box-shadow:0 4px 0 #1B4A22}
+.btn.ghost{background:var(--paper-2);color:var(--ink);box-shadow:0 4px 0 #CDB88F}
+.start-figs{display:flex;justify-content:center;gap:4px;margin-top:6px}
+.start-figs svg{width:90px;height:auto}
+
+/* game */
+.game{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:22px;align-items:start}
+.stagecol{display:grid;gap:14px;position:sticky;top:12px}
+.progress{display:flex;gap:6px;justify-content:center;flex-wrap:wrap}
+.dot{width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.12);color:var(--white);font-size:.7rem;font-weight:800;display:grid;place-items:center}
+.dot.done{background:var(--gold);color:var(--ink)}
+.dot.now{outline:3px solid var(--gold);background:rgba(212,160,23,.25)}
+.stage{position:relative;border-radius:18px;overflow:hidden;min-height:420px;
+  background:radial-gradient(ellipse 55% 70% at 50% 18%,rgba(255,228,160,.42),transparent 70%),linear-gradient(180deg,#3A1A17 0%,#2A1412 72%,var(--wood) 72%,var(--wood-light) 100%);
+  box-shadow:inset 0 0 0 4px var(--curtain-deep),0 10px 30px rgba(0,0,0,.4)}
+.stage::before,.stage::after{content:"";position:absolute;top:0;bottom:28%;width:13%;background:repeating-linear-gradient(90deg,var(--curtain) 0 10px,var(--curtain-deep) 10px 16px);z-index:1}
+.stage::before{left:0;border-bottom-right-radius:60% 30%}
+.stage::after{right:0;border-bottom-left-radius:60% 30%}
+.figwrap{position:relative;z-index:2;display:flex;justify-content:center;padding-top:18px}
+.figwrap svg{height:360px;width:auto;max-width:100%}
+.nameplate{position:absolute;z-index:3;left:50%;bottom:14px;transform:translateX(-50%);background:var(--paper);border:3px solid var(--wood);border-radius:10px;padding:2px 18px;font-family:var(--display);font-weight:800;font-size:1.3rem;white-space:nowrap}
+.goal{background:var(--paper);border-radius:16px;padding:14px 18px;border-left:8px solid var(--gold)}
+.goal .eyebrow{color:var(--accent)}
+.goal p{margin:4px 0 0;font-size:1.12rem;font-weight:700}
+
+.closetcol{display:grid;gap:14px;min-width:0}
+details.code{background:var(--paper);border-radius:16px;padding:12px 18px}
+details.code summary{font-family:var(--display);font-weight:800;font-size:1.2rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+details.code summary::-webkit-details-marker{display:none}
+details.code summary::after{content:"Show";font-family:var(--body);font-size:.85rem;background:var(--paper-2);padding:2px 10px;border-radius:999px}
+details.code[open] summary::after{content:"Hide"}
+.closet{background:linear-gradient(180deg,#F5E9CF,#EEDDBA);border-radius:18px;padding:14px;box-shadow:0 10px 30px rgba(0,0,0,.35);border:6px solid var(--wood)}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:12px}
+.tab{border:0;border-radius:12px;padding:9px 6px;font-weight:800;font-size:.95rem;background:rgba(139,90,50,.15);color:var(--ink);display:flex;align-items:center;justify-content:center;gap:6px}
+.tab[aria-selected=true]{background:var(--wood);color:var(--white)}
+.tab .tick{width:18px;height:18px;border-radius:50%;background:var(--good);color:#fff;font-size:.7rem;display:grid;place-items:center}
+.note{background:var(--white);border-radius:10px;padding:8px 12px;font-size:.92rem;font-weight:700;margin-bottom:10px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:10px}
+.item{position:relative;border:3px solid transparent;background:var(--white);border-radius:14px;padding:8px 6px 8px;display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--ink);box-shadow:0 2px 0 rgba(0,0,0,.08);transition:transform .1s}
+.item:hover{transform:translateY(-2px)}
+.item svg{width:100%;height:84px}
+.item span{font-weight:800;font-size:.85rem;line-height:1.15;text-align:center;min-height:2.3em}
+.item[aria-pressed=true]{border-color:var(--gold);background:#FFF5D6}
+.item[aria-pressed=true]::after{content:"✓";position:absolute;top:6px;right:6px;width:22px;height:22px;border-radius:50%;background:var(--gold);color:var(--ink);font-weight:800;display:grid;place-items:center;font-size:.8rem}
+.checkrow{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.checkrow .btn{flex:1}
+
+/* feedback */
+.fb{position:absolute;inset:10px;z-index:6;background:var(--paper);border-radius:14px;padding:16px;overflow:auto;display:flex;flex-direction:column;gap:10px;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.fb h3{display:flex;align-items:center;gap:8px}
+.rows{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.row{display:grid;grid-template-columns:44px 1fr;gap:10px;align-items:center;background:var(--white);border-radius:10px;padding:6px 10px;border-left:6px solid var(--good)}
+.row.no{border-left-color:var(--bad)}
+.row svg{width:44px;height:40px}
+.row .mark{font-weight:800}
+.row.ok .mark{color:var(--good)}
+.row.no .mark{color:var(--bad)}
+.row p{margin:0;font-size:.9rem}
+.goalrow{display:grid;grid-template-columns:44px 1fr}
+.goalrow .gi{font-size:1.5rem;text-align:center}
+.bigstars{font-size:2.2rem;letter-spacing:4px;color:var(--gold);text-align:center;line-height:1}
+.bigstars .off{color:#D9C9A6}
+.fb .btn{align-self:stretch}
+
+/* leaves */
+.leaf{position:absolute;top:-20px;z-index:7;width:16px;height:16px;border-radius:0 80% 0 80%;animation:fall linear forwards;pointer-events:none}
+@keyframes fall{to{transform:translateY(480px) rotate(540deg);opacity:.2}}
+@media (prefers-reduced-motion:reduce){.leaf{display:none}.item{transition:none}}
+
+/* end */
+.cert{text-align:center;border:6px double var(--gold)}
+.cert .who{font-family:var(--display);font-size:clamp(2rem,6vw,3.2rem);color:var(--accent);line-height:1.05;margin:6px 0}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px;margin-top:18px}
+.gcard{background:var(--white);border-radius:14px;padding:8px;text-align:center}
+.gcard svg{width:100%;height:170px}
+.gcard b{display:block;font-family:var(--display);font-size:1.1rem}
+.gcard .s{color:var(--gold);font-size:1rem}
+
+@media (max-width:860px){
+  .start,.game{grid-template-columns:1fr}
+  .stagecol{position:static}
+  .stage{min-height:330px}
+  .figwrap svg{height:280px}
+}
+</style>
+
+<header class="valance">
+  <div class="hwrap">
+    <div>
+      <div class="eyebrow">Grandparents Day Performance · Friday, November 20</div>
+      <h1>Concert Closet</h1>
+    </div>
+    <div class="hud">
+      <span class="pill" id="starPill"><span class="star">★</span> <span id="starCount">0</span></span>
+      <button class="pill" id="muteBtn" type="button" aria-pressed="false">🔊 Sound</button>
+    </div>
+  </div>
+</header>
+<main id="app"></main>
+
+<script>
+const COLORS={
+  burgundy:{name:'Burgundy',hex:'#7B1E2B',fall:true},
+  rust:{name:'Rust',hex:'#B5502D',fall:true},
+  burntOrange:{name:'Burnt Orange',hex:'#CC5500',fall:true},
+  mustard:{name:'Mustard Yellow',hex:'#D4A017',fall:true},
+  olive:{name:'Olive Green',hex:'#6B7A2A',fall:true},
+  forest:{name:'Forest Green',hex:'#2E5E3A',fall:true},
+  brown:{name:'Brown',hex:'#6B4226',fall:true},
+  cream:{name:'Cream',hex:'#F3E7C9',fall:true},
+  beige:{name:'Beige',hex:'#D6BF98',fall:true},
+  neonPink:{name:'Neon Pink',hex:'#FF2EC4',neon:true},
+  neonGreen:{name:'Neon Green',hex:'#45F01A',neon:true},
+  neonYellow:{name:'Neon Yellow',hex:'#E8FF1F',neon:true},
+  skyBlue:{name:'Sky Blue',hex:'#69B8F0'},
+  lavender:{name:'Lavender',hex:'#B49AE6'},
+  denim:{name:'Blue',hex:'#4A72B0'}
+};
+const KINDS={
+  dressShirt:{cat:'top',name:'Dress Shirt',ok:true,why:'Dress shirts are on the list of tops.'},
+  blouse:{cat:'top',name:'Blouse',ok:true,why:'Blouses are on the list of tops.'},
+  sweater:{cat:'top',name:'Sweater',ok:true,why:'Sweaters are on the list of tops.'},
+  dress:{cat:'top',name:'Dress',ok:true,why:'Dresses are allowed, and you don\'t need a bottom with one.'},
+  graphicTee:{cat:'top',name:'Graphic T-Shirt',ok:false,why:'Graphic T-shirts are on the "Please avoid" list.'},
+  jersey:{cat:'top',name:'Sports Jersey',ok:false,why:'A sports jersey is athletic wear, which is on the "Please avoid" list.'},
+  pajamaTop:{cat:'top',name:'Pajama Top',ok:false,why:'Pajamas are on the "Please avoid" list.'},
+  dressPants:{cat:'bottom',name:'Dress Pants',ok:true,why:'Dress pants are on the list of bottoms.'},
+  skirt:{cat:'bottom',name:'Skirt',ok:true,why:'Skirts are on the list of bottoms.'},
+  jeans:{cat:'bottom',name:'Jeans',ok:false,why:'Jeans are on the "Please avoid" list.'},
+  sweatpants:{cat:'bottom',name:'Sweatpants',ok:false,why:'Sweatpants are athletic wear, which is on the "Please avoid" list.'},
+  pajamaPants:{cat:'bottom',name:'Pajama Pants',ok:false,why:'Pajamas are on the "Please avoid" list.'},
+  dressShoes:{cat:'shoes',name:'Dress Shoes',ok:true,why:'Dress shoes are on the shoe list.'},
+  flats:{cat:'shoes',name:'Flats',ok:true,why:'Flats are on the shoe list.'},
+  loafers:{cat:'shoes',name:'Loafers',ok:true,why:'Loafers are on the shoe list.'},
+  boots:{cat:'shoes',name:'Dressy Boots',ok:true,why:'Clean, dressy boots are on the shoe list.'},
+  sneakers:{cat:'shoes',name:'Sneakers',ok:false,why:'Sneakers are on the "Please avoid" list.'},
+  flipFlops:{cat:'shoes',name:'Flip-Flops',ok:false,why:'Flip-flops are overly casual, which is on the "Please avoid" list.'}
+};
+const ORDER=['top','bottom','shoes'];
+const CAT_LABEL={top:'Tops & Dresses',bottom:'Bottoms',shoes:'Shoes'};
+const GOOD={top:['dressShirt','blouse','sweater','dress'],bottom:['dressPants','skirt'],shoes:['dressShoes','flats','loafers','boots']};
+const BADK={top:['graphicTee','jersey','pajamaTop'],bottom:['jeans','sweatpants','pajamaPants'],shoes:['sneakers','flipFlops']};
+const FALL=Object.keys(COLORS).filter(k=>COLORS[k].fall);
+const OFF=['neonPink','neonGreen','neonYellow','skyBlue','lavender'];
+const ALLC=[...FALL,...OFF];
+
+const piecesOf=o=>[o.top,o.bottom,o.shoes].filter(Boolean);
+const ROUNDS=[
+  {name:'Ava',skin:'#8D5524',hair:'#1E120B',style:'puffs',goal:'Ava loves cozy clothes. Give her a sweater.',
+   must:[['sweater','mustard'],['sweater','neonPink'],['pajamaTop','forest']],
+   check:o=>o.top&&o.top.kind==='sweater'?{ok:true,msg:'Ava got her cozy sweater.'}:{ok:false,msg:'Ava asked for a sweater. Look in Tops & Dresses.'}},
+  {name:'Leo',skin:'#F1C9A5',hair:'#8A4B22',style:'short',goal:'Leo\'s favorite color is forest green. Put forest green somewhere in his outfit.',
+   must:[['dressShirt','forest'],['jersey','neonGreen'],['loafers','forest']],
+   check:o=>piecesOf(o).some(p=>p.color==='forest')?{ok:true,msg:'Forest green is in Leo\'s outfit.'}:{ok:false,msg:'Leo wants forest green in his outfit. Neon green and olive green are different colors.'}},
+  {name:'Ezra',skin:'#C68642',hair:'#2A1B12',style:'curly',fix:{top:['dressShirt','rust'],bottom:['dressPants','brown'],shoes:['sneakers','olive']},
+   goal:'Uh-oh! Something in Ezra\'s outfit breaks the dress code. Find it and fix it.',
+   must:[['loafers','brown'],['boots','burgundy']],
+   check:()=>({ok:true,msg:'Ezra\'s outfit is fixed.'})},
+  {name:'Sofia',skin:'#E0AC69',hair:'#3B2314',style:'long',goal:'Sofia wants to wear a skirt with flats.',
+   must:[['skirt','burgundy'],['skirt','neonPink'],['flats','cream'],['flipFlops','beige']],
+   check:o=>{const s=o.bottom&&o.bottom.kind==='skirt',f=o.shoes&&o.shoes.kind==='flats';
+     return s&&f?{ok:true,msg:'Sofia got her skirt and flats.'}:{ok:false,msg:'Sofia still needs '+[!s&&'a skirt',!f&&'flats'].filter(Boolean).join(' and ')+'.'}}},
+  {name:'Mateo',skin:'#A86B3C',hair:'#1B1209',style:'short',goal:'Mateo wants every piece of his outfit to be a different fall color.',
+   must:[['sweater','olive'],['dressPants','brown'],['loafers','burgundy']],
+   check:o=>{const c=piecesOf(o).map(p=>p.color);return new Set(c).size===c.length?{ok:true,msg:'Every piece is a different color.'}:{ok:false,msg:'Two pieces are the same color. Mateo wants each one to be different.'}}},
+  {name:'Hana',skin:'#F3D2B3',hair:'#120C08',style:'bun',fix:{top:['blouse','neonPink'],bottom:['skirt','cream'],shoes:['flats','burgundy']},
+   goal:'Hana\'s outfit has a problem. Find the piece that breaks the dress code and fix it.',
+   must:[['blouse','rust'],['sweater','beige']],
+   check:()=>({ok:true,msg:'Hana\'s outfit is fixed.'})},
+  {name:'Grace',skin:'#5C3A21',hair:'#0F0A07',style:'long',goal:'Grace wants to wear a dress and boots.',
+   must:[['dress','mustard'],['dress','neonYellow'],['boots','brown'],['sneakers','brown']],
+   check:o=>{const d=o.top&&o.top.kind==='dress',b=o.shoes&&o.shoes.kind==='boots';
+     return d&&b?{ok:true,msg:'Grace got her dress and boots.'}:{ok:false,msg:'Grace still needs '+[!d&&'a dress',!b&&'boots'].filter(Boolean).join(' and ')+'.'}}},
+  {name:'Omar',skin:'#C99566',hair:'#1A120C',style:'short',goal:'Omar wants a calm look. Use only cream, beige, and brown.',
+   must:[['dressShirt','cream'],['dressPants','beige'],['dressShoes','brown'],['sweater','brown']],
+   check:o=>piecesOf(o).every(p=>['cream','beige','brown'].includes(p.color))?{ok:true,msg:'Only cream, beige, and brown. Nice and calm!'}:{ok:false,msg:'Omar only wants cream, beige, and brown. One piece is a different color.'}},
+  {name:'Nia',skin:'#7A4A2A',hair:'#1A0F08',style:'puffs',fix:{top:['graphicTee','mustard'],bottom:['dressPants','olive'],shoes:['loafers','brown']},
+   goal:'Tricky one! Nia\'s outfit is all fall colors, but something still breaks the dress code. Fix it.',
+   must:[['blouse','cream'],['sweater','mustard']],
+   check:()=>({ok:true,msg:'Nia\'s outfit is fixed.'})},
+  {name:'Theo',skin:'#F5D0B0',hair:'#C98A3E',style:'curly',goal:'Theo wants dress pants, and his shoes must be the same color as his pants.',
+   must:[['dressPants','burgundy'],['dressShoes','burgundy'],['dressPants','brown'],['boots','brown']],
+   check:o=>{if(!(o.bottom&&o.bottom.kind==='dressPants'))return{ok:false,msg:'Theo asked for dress pants.'};
+     return o.shoes&&o.shoes.color===o.bottom.color?{ok:true,msg:'Theo\'s shoes match his pants.'}:{ok:false,msg:'Theo\'s shoes need to be the same color as his pants.'}}}
+];
+
+/* ---------- helpers ---------- */
+const rnd=a=>a[Math.floor(Math.random()*a.length)];
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function shade(hex,amt){const n=parseInt(hex.slice(1),16);let r=n>>16,g=n>>8&255,b=n&255;const t=amt<0?0:255,p=Math.abs(amt);
+  r=Math.round(r+(t-r)*p);g=Math.round(g+(t-g)*p);b=Math.round(b+(t-b)*p);return'#'+((1<<24)|(r<<16)|(g<<8)|b).toString(16).slice(1)}
+function light(hex){const n=parseInt(hex.slice(1),16);return((n>>16)*299+(n>>8&255)*587+(n&255)*114)/1000>150}
+function mk(kind,color){if(kind==='jeans')color='denim';return{id:kind+'-'+color,kind,color}}
+const label=it=>it.kind==='jeans'?'Blue Jeans':COLORS[it.color].name+' '+KINDS[it.kind].name;
+const pieceOk=it=>KINDS[it.kind].ok&&!!COLORS[it.color].fall;
+function colorMsg(it){const c=COLORS[it.color];if(it.kind==='jeans')return'';
+  if(c.fall)return c.name+' is a warm fall color.';
+  if(c.neon)return c.name+' is a neon color, and neon colors are on the "Please avoid" list.';
+  return c.name+' is not one of the fall colors.'}
+function pieceMsg(it){const k=KINDS[it.kind];if(pieceOk(it))return k.why+' '+colorMsg(it);
+  const parts=[];if(!k.ok)parts.push(k.why);
+  if(it.kind!=='jeans'){if(!COLORS[it.color].fall)parts.push(colorMsg(it));else if(!k.ok)parts.push('The color is fine, but this kind of clothing is not.')}
+  return parts.join(' ')}
+
+let uid=0;
+function dots(fill){const id='pd'+(uid++);return{def:`<defs><pattern id="${id}" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="2" fill="${fill}"/><circle cx="9" cy="9" r="2" fill="${fill}"/></pattern></defs>`,url:`url(#${id})`}}
+
+/* ---------- drawing ---------- */
+const TORSO='M66 106 Q100 96 134 106 L140 210 L60 210 Z';
+const LSL='M66 106 L44 194 L60 200 L78 132 Z',LSR='M134 106 L156 194 L140 200 L122 132 Z';
+const SSL='M66 106 L52 150 L68 155 L78 128 Z',SSR='M134 106 L148 150 L132 155 L122 128 Z';
+const PANTS='M62 198 L138 198 L136 334 L106 334 L100 232 L94 334 L64 334 Z';
+
+function drawTop(it){
+  const c=COLORS[it.color].hex,d=shade(c,-.3),l=shade(c,.4),k=it.kind;
+  const st=`stroke="${d}" stroke-width="2" stroke-linejoin="round"`;
+  let s='';
+  if(k==='dress'){
+    s+=`<path d="${SSL}" fill="${c}" ${st}/><path d="${SSR}" fill="${c}" ${st}/>`;
+    s+=`<path d="M64 164 L40 270 Q100 282 160 270 L136 164 Z" fill="${c}" ${st}/>`;
+    s+=`<path d="M66 106 Q100 96 134 106 L136 168 L64 168 Z" fill="${c}" ${st}/>`;
+    s+=`<path d="M80 180 L64 266 M100 180 L100 274 M120 180 L136 266" stroke="${d}" stroke-width="2" opacity=".45" fill="none"/>`;
+    s+=`<rect x="63" y="158" width="74" height="11" rx="4" fill="${d}"/><circle cx="100" cy="163" r="6" fill="${l}"/>`;
+    s+=`<path d="M86 101 Q100 114 114 101" fill="none" stroke="${d}" stroke-width="3"/>`;
+    return s;
+  }
+  const short=k==='graphicTee'||k==='jersey';
+  s+=`<path d="${short?SSL:LSL}" fill="${c}" ${st}/><path d="${short?SSR:LSR}" fill="${c}" ${st}/><path d="${TORSO}" fill="${c}" ${st}/>`;
+  if(k==='dressShirt'){
+    s+=`<path d="M100 118 L100 208" stroke="${d}" stroke-width="2"/>`;
+    [132,152,172,192].forEach(y=>s+=`<circle cx="100" cy="${y}" r="2.6" fill="${l}" stroke="${d}"/>`);
+    s+=`<path d="M84 100 L100 118 L90 126 L79 106Z M116 100 L100 118 L110 126 L121 106Z" fill="${l}" ${st}/>`;
+    s+=`<path d="M46 186 L62 192 M154 186 L138 192" stroke="${d}" stroke-width="5"/>`;
+  }else if(k==='blouse'){
+    [[84,104],[92,109],[100,111],[108,109],[116,104]].forEach(([x,y])=>s+=`<circle cx="${x}" cy="${y}" r="5.5" fill="${l}" stroke="${d}" stroke-width="1.5"/>`);
+    s+=`<path d="M100 122 L88 114 L88 130Z M100 122 L112 114 L112 130Z" fill="${d}"/><circle cx="100" cy="122" r="3.5" fill="${l}"/>`;
+    s+=`<path d="M48 182 Q54 192 62 190 M152 182 Q146 192 138 190" stroke="${d}" stroke-width="3" fill="none"/>`;
+  }else if(k==='sweater'){
+    s+=`<path d="M84 101 Q100 114 116 101" stroke="${d}" stroke-width="6" fill="none" stroke-linecap="round"/>`;
+    s+=`<rect x="60" y="198" width="80" height="12" rx="3" fill="${d}"/>`;
+    for(let x=64;x<138;x+=6)s+=`<path d="M${x} 199 L${x} 209" stroke="${l}" stroke-width="1.2" opacity=".6"/>`;
+    s+=`<path d="M100 120 l-6 10 l6 10 l-6 10 l6 10 l-6 10 l6 10 M100 120 l6 10 l-6 10 l6 10 l-6 10 l6 10 l-6 10" stroke="${d}" stroke-width="2" fill="none" opacity=".7"/>`;
+    s+=`<path d="M45 186 L61 193 M155 186 L139 193" stroke="${d}" stroke-width="7"/>`;
+  }else if(k==='graphicTee'){
+    const g=light(c)?'#2B1D14':'#FFF6D8';
+    s+=`<path d="M86 101 Q100 113 114 101" stroke="${d}" stroke-width="4" fill="none"/>`;
+    s+=`<circle cx="100" cy="158" r="30" fill="${g}" opacity=".9"/>`;
+    s+=`<path d="M106 134 L88 162 L100 162 L93 184 L114 152 L102 152 L110 134Z" fill="${light(c)?'#FF2EC4':'#2B1D14'}"/>`;
+  }else if(k==='jersey'){
+    const g=light(c)?'#2B1D14':'#FFFDF7';
+    s+=`<path d="M86 102 L100 120 L114 102" stroke="${g}" stroke-width="5" fill="none"/>`;
+    s+=`<rect x="62" y="112" width="6" height="96" fill="${g}" opacity=".85"/><rect x="132" y="112" width="6" height="96" fill="${g}" opacity=".85"/>`;
+    s+=`<text x="100" y="178" text-anchor="middle" font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="42" fill="${g}">23</text>`;
+    s+=`<path d="M53 146 L69 151 M147 146 L131 151" stroke="${g}" stroke-width="4"/>`;
+  }else if(k==='pajamaTop'){
+    const p=dots(light(c)?'#8a6d5a':'#FFF6D8');
+    s+=p.def+`<path d="${TORSO}" fill="${p.url}"/><path d="${LSL}" fill="${p.url}"/><path d="${LSR}" fill="${p.url}"/>`;
+    s+=`<path d="M82 102 Q100 124 118 102" stroke="#FFFDF7" stroke-width="4" fill="none"/>`;
+    [140,162,184].forEach(y=>s+=`<circle cx="100" cy="${y}" r="3.5" fill="#FFFDF7"/>`);
+  }
+  return s;
+}
+function drawBottom(it){
+  const c=COLORS[it.color].hex,d=shade(c,-.3),l=shade(c,.35),k=it.kind;
+  const st=`stroke="${d}" stroke-width="2" stroke-linejoin="round"`;
+  let s='';
+  if(k==='skirt'){
+    s+=`<path d="M62 198 L138 198 L156 276 Q100 288 44 276 Z" fill="${c}" ${st}/>`;
+    s+=`<path d="M78 206 L66 279 M92 206 L88 283 M108 206 L112 283 M122 206 L134 279" stroke="${d}" stroke-width="2" opacity=".55"/>`;
+    s+=`<rect x="62" y="198" width="76" height="9" rx="3" fill="${d}"/>`;
+  }else if(k==='sweatpants'){
+    s+=`<path d="M62 198 L138 198 L134 322 Q120 330 106 322 L100 232 L94 322 Q80 330 66 322 Z" fill="${c}" ${st}/>`;
+    s+=`<rect x="64" y="318" width="30" height="16" rx="5" fill="${d}"/><rect x="106" y="318" width="30" height="16" rx="5" fill="${d}"/>`;
+    s+=`<path d="M66 206 L68 316 M134 206 L132 316" stroke="#FFFDF7" stroke-width="5"/>`;
+    s+=`<rect x="62" y="198" width="76" height="10" rx="3" fill="${d}"/><path d="M96 208 l-4 16 M104 208 l4 16" stroke="#FFFDF7" stroke-width="2"/>`;
+  }else if(k==='jeans'){
+    s+=`<path d="${PANTS}" fill="${c}" ${st}/>`;
+    s+=`<path d="M66 202 L68 330 M134 202 L132 330 M68 212 Q78 220 86 210 M132 212 Q122 220 114 210 M100 206 L100 230" stroke="#E7A33C" stroke-width="1.6" stroke-dasharray="3 3" fill="none"/>`;
+    s+=`<rect x="62" y="198" width="76" height="9" rx="3" fill="${d}"/><circle cx="100" cy="202" r="2.5" fill="#E7C46A"/>`;
+    s+=`<rect x="64" y="322" width="30" height="12" fill="${l}"/><rect x="106" y="322" width="30" height="12" fill="${l}"/>`;
+  }else if(k==='pajamaPants'){
+    const p=dots(light(c)?'#8a6d5a':'#FFF6D8');
+    s+=`<path d="${PANTS}" fill="${c}" ${st}/>`+p.def+`<path d="${PANTS}" fill="${p.url}"/>`;
+    s+=`<rect x="62" y="198" width="76" height="9" rx="3" fill="#FFFDF7" opacity=".9"/>`;
+  }else{
+    s+=`<path d="${PANTS}" fill="${c}" ${st}/>`;
+    s+=`<path d="M80 212 L79 332 M120 212 L121 332" stroke="${d}" stroke-width="1.6" opacity=".6"/>`;
+    s+=`<rect x="62" y="198" width="76" height="9" rx="3" fill="${d}"/>`;
+  }
+  return s;
+}
+const FOOTL='M66 326 L96 326 L98 346 L54 346 Q52 334 66 326Z',FOOTR='M104 326 L134 326 Q148 334 146 346 L102 346 Z';
+function drawShoes(it,skin){
+  const c=COLORS[it.color].hex,d=shade(c,-.35),l=shade(c,.4),k=it.kind;
+  const st=`stroke="${d}" stroke-width="2" stroke-linejoin="round"`;
+  let s='';
+  if(k==='flipFlops'){
+    const sk=skin||'#E0AC69';
+    s+=`<rect x="50" y="342" width="48" height="6" rx="3" fill="${c}" ${st}/><rect x="102" y="342" width="48" height="6" rx="3" fill="${c}" ${st}/>`;
+    s+=`<ellipse cx="78" cy="337" rx="17" ry="7" fill="${sk}"/><ellipse cx="122" cy="337" rx="17" ry="7" fill="${sk}"/>`;
+    s+=`<path d="M64 336 L74 330 L86 336 M114 336 L126 330 L136 336" stroke="${c}" stroke-width="4" fill="none" stroke-linecap="round"/>`;
+    return s;
+  }
+  if(k==='boots'){
+    s+=`<rect x="66" y="290" width="30" height="42" rx="4" fill="${c}" ${st}/><rect x="104" y="290" width="30" height="42" rx="4" fill="${c}" ${st}/>`;
+    s+=`<path d="M66 298 L96 298 M104 298 L134 298" stroke="${l}" stroke-width="3"/>`;
+  }
+  if(k==='flats'){
+    s+=`<path d="M68 334 L96 334 L98 346 L56 346 Q55 338 68 334Z" fill="${c}" ${st}/><path d="M104 334 L132 334 Q145 338 144 346 L102 346 Z" fill="${c}" ${st}/>`;
+    s+=`<circle cx="66" cy="337" r="3.5" fill="${l}"/><circle cx="134" cy="337" r="3.5" fill="${l}"/>`;
+    return s;
+  }
+  s+=`<path d="${FOOTL}" fill="${c}" ${st}/><path d="${FOOTR}" fill="${c}" ${st}/>`;
+  if(k==='sneakers'){
+    s+=`<rect x="52" y="341" width="47" height="7" rx="3" fill="#FFFDF7" stroke="#bbb"/><rect x="101" y="341" width="47" height="7" rx="3" fill="#FFFDF7" stroke="#bbb"/>`;
+    s+=`<path d="M72 330 L84 336 M76 328 L88 334 M128 330 L116 336 M124 328 L112 334" stroke="#FFFDF7" stroke-width="2.5"/>`;
+  }else if(k==='loafers'){
+    s+=`<path d="M64 333 L90 333 M110 333 L136 333" stroke="${d}" stroke-width="4"/><rect x="72" y="331" width="8" height="4" fill="${l}"/><rect x="120" y="331" width="8" height="4" fill="${l}"/>`;
+    s+=`<rect x="52" y="344" width="47" height="3" fill="${d}"/><rect x="101" y="344" width="47" height="3" fill="${d}"/>`;
+  }else if(k==='dressShoes'){
+    s+=`<ellipse cx="66" cy="336" rx="7" ry="3" fill="#fff" opacity=".45"/><ellipse cx="134" cy="336" rx="7" ry="3" fill="#fff" opacity=".45"/>`;
+    s+=`<rect x="52" y="344" width="47" height="3" fill="${d}"/><rect x="101" y="344" width="47" height="3" fill="${d}"/>`;
+    s+=`<path d="M80 328 L90 330 M120 328 L110 330" stroke="${d}" stroke-width="2"/>`;
+  }
+  return s;
+}
+function hairFront(r){
+  const h=r.hair,base=`<path d="M67 58 Q66 22 100 22 Q134 22 133 58 Q124 38 100 40 Q78 38 67 58Z" fill="${h}"/>`;
+  if(r.style==='puffs')return`<circle cx="68" cy="32" r="15" fill="${h}"/><circle cx="132" cy="32" r="15" fill="${h}"/>`+base;
+  if(r.style==='bun')return`<circle cx="100" cy="18" r="14" fill="${h}"/>`+base;
+  if(r.style==='curly')return[[70,46],[75,32],[87,24],[100,21],[113,24],[125,32],[130,46]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="11" fill="${h}"/>`).join('');
+  if(r.style==='long')return`<path d="M67 62 Q62 22 100 22 Q138 22 133 62 Q128 40 108 36 Q90 46 67 62Z" fill="${h}"/>`;
+  return base;
+}
+function figure(r,o){
+  const sk=r.skin,isDress=o.top&&o.top.kind==='dress';
+  let s=`<svg viewBox="0 0 200 360" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${r.name}'s outfit">`;
+  s+=`<ellipse cx="100" cy="348" rx="66" ry="8" fill="rgba(0,0,0,.28)"/>`;
+  if(r.style==='long')s+=`<path d="M64 50 Q56 120 66 140 L134 140 Q144 120 136 50 Z" fill="${r.hair}"/>`;
+  s+=`<path d="M68 108 L46 196 L60 202 L80 130 Z M132 108 L154 196 L140 202 L120 130 Z" fill="${sk}"/>`;
+  s+=`<rect x="70" y="200" width="26" height="138" rx="10" fill="${sk}"/><rect x="104" y="200" width="26" height="138" rx="10" fill="${sk}"/>`;
+  if(!isDress)s+=o.bottom?drawBottom(o.bottom):`<path d="${PANTS}" fill="#EFE6D3" stroke="#B9A785" stroke-width="2" stroke-dasharray="5 4"/>`;
+  s+=o.shoes?drawShoes(o.shoes,sk):`<ellipse cx="80" cy="340" rx="16" ry="7" fill="${sk}"/><ellipse cx="120" cy="340" rx="16" ry="7" fill="${sk}"/>`;
+  s+=`<rect x="91" y="86" width="18" height="22" rx="4" fill="${sk}"/>`;
+  s+=o.top?drawTop(o.top):`<path d="${SSL}" fill="#EFE6D3" stroke="#B9A785" stroke-width="2" stroke-dasharray="5 4"/><path d="${SSR}" fill="#EFE6D3" stroke="#B9A785" stroke-width="2" stroke-dasharray="5 4"/><path d="${TORSO}" fill="#EFE6D3" stroke="#B9A785" stroke-width="2" stroke-dasharray="5 4"/>`;
+  s+=`<circle cx="52" cy="204" r="9" fill="${sk}"/><circle cx="148" cy="204" r="9" fill="${sk}"/>`;
+  s+=`<circle cx="100" cy="58" r="32" fill="${sk}"/><circle cx="68" cy="62" r="6" fill="${sk}"/><circle cx="132" cy="62" r="6" fill="${sk}"/>`;
+  s+=`<circle cx="89" cy="60" r="3.4" fill="#2B1D14"/><circle cx="111" cy="60" r="3.4" fill="#2B1D14"/>`;
+  s+=`<circle cx="82" cy="70" r="5" fill="#E8776B" opacity=".3"/><circle cx="118" cy="70" r="5" fill="#E8776B" opacity=".3"/>`;
+  s+=`<path d="M90 72 Q100 81 110 72" stroke="#2B1D14" stroke-width="2.5" fill="none" stroke-linecap="round"/>`;
+  s+=hairFront(r)+`</svg>`;
+  return s;
+}
+function thumb(it){
+  const cat=KINDS[it.kind].cat;
+  const vb=cat==='top'?(it.kind==='dress'?'28 92 144 196':'38 92 124 124'):cat==='bottom'?'38 194 124 144':'48 286 104 64';
+  const body=cat==='top'?drawTop(it):cat==='bottom'?drawBottom(it):drawShoes(it);
+  return`<svg viewBox="${vb}" aria-hidden="true">${body}</svg>`;
+}
+
+/* ---------- sound ---------- */
+let actx=null,muted=false;
+function tone(freqs,dur){if(muted)return;try{actx=actx||new(window.AudioContext||window.webkitAudioContext)();
+  freqs.forEach((f,i)=>{const o=actx.createOscillator(),g=actx.createGain();o.type='triangle';o.frequency.value=f;
+  const t=actx.currentTime+i*dur;g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.16,t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+dur*1.6);
+  o.connect(g).connect(actx.destination);o.start(t);o.stop(t+dur*1.8)})}catch(e){}}
+document.getElementById('muteBtn').addEventListener('click',e=>{muted=!muted;e.currentTarget.textContent=muted?'🔇 Sound off':'🔊 Sound';e.currentTarget.setAttribute('aria-pressed',muted)});
+
+/* ---------- state ---------- */
+const app=document.getElementById('app');
+let S={name:'',round:0,closet:null,outfit:{},tab:'top',tries:0,results:[],codeOpen:true,fb:null};
+const totalStars=()=>S.results.reduce((a,r)=>a+r.stars,0);
+function updateStars(){document.getElementById('starCount').textContent=totalStars()}
+
+function codeBox(){
+  return`<p class="memo">Students should arrive nicely dressed in <b>fall colors</b> for our Grandparents Day performance. We want everyone to look polished, coordinated, and concert-ready!</p>
+  <h4>Acceptable colors</h4>
+  <div class="swatches">${FALL.map(k=>`<span class="sw"><i style="background:${COLORS[k].hex}"></i>${COLORS[k].name}</span>`).join('')}</div>
+  <p class="small">…and other warm autumn tones.</p>
+  <h4>What to wear</h4>
+  <ul class="wear">
+    <li><b>Tops:</b> dress shirts, blouses, sweaters, or other neat, dressy tops</li>
+    <li><b>Bottoms:</b> dress pants, skirts, dresses, or other neat bottoms in coordinating colors</li>
+    <li><b>Shoes:</b> dress shoes, flats, loafers, or clean, dressy boots</li>
+  </ul>
+  <h4>Please avoid</h4>
+  <div class="chips">${['Jeans','Athletic wear','Pajamas','Graphic T-shirts','Sneakers','Neon colors','Overly casual clothes'].map(x=>`<span class="chip">${x}</span>`).join('')}</div>`;
+}
+
+function startScreen(){
+  S.results=[];updateStars();
+  const demo=[{r:ROUNDS[3],o:{top:mk('blouse','mustard'),bottom:mk('skirt','burgundy'),shoes:mk('flats','brown')}},
+              {r:ROUNDS[4],o:{top:mk('sweater','forest'),bottom:mk('dressPants','beige'),shoes:mk('loafers','brown')}},
+              {r:ROUNDS[6],o:{top:mk('dress','rust'),shoes:mk('boots','brown')}}];
+  app.innerHTML=`<div class="start">
+    <section class="panel">
+      <span class="eyebrow" style="color:var(--accent)">You are the stylist</span>
+      <h2>Ten classmates need concert outfits!</h2>
+      <p class="lead">Read the music teacher's dress code. Then pick a top, a bottom, and shoes for each student.</p>
+      <div class="start-figs">${demo.map(d=>figure(d.r,d.o)).join('')}</div>
+      <div class="steps">
+        <div class="step"><b class="n">1</b><div>Read what each student wants.</div></div>
+        <div class="step"><b class="n">2</b><div>Choose clothes from the closet. Read the labels carefully!</div></div>
+        <div class="step"><b class="n">3</b><div>Ask the Music Teacher to check. Get it right the first time for 3 stars.</div></div>
+      </div>
+      <label class="lbl" for="stylistName">Your name</label>
+      <div class="namebox"><input type="text" id="stylistName" maxlength="24" placeholder="Type your name" value="${S.name.replace(/"/g,'&quot;')}">
+      <button class="btn" id="goBtn" type="button">Start styling</button></div>
+    </section>
+    <section class="panel"><h3>Concert dress code</h3>${codeBox()}</section>
+  </div>`;
+  document.getElementById('goBtn').onclick=()=>{S.name=document.getElementById('stylistName').value.trim();tone([523,784],.1);S.round=0;loadRound()};
+  document.getElementById('stylistName').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('goBtn').click()});
+}
+
+function buildCloset(r){
+  const sizes={top:8,bottom:6,shoes:6},out={top:[],bottom:[],shoes:[]},seen=new Set();
+  const add=it=>{if(seen.has(it.id))return false;seen.add(it.id);out[KINDS[it.kind].cat].push(it);return true};
+  (r.must||[]).forEach(([k,c])=>add(mk(k,c)));
+  if(r.fix)Object.values(r.fix).forEach(([k,c])=>add(mk(k,c)));
+  for(const cat of ORDER){
+    let guard=0,flip=out[cat].filter(pieceOk).length<=out[cat].length/2;
+    while(out[cat].length<sizes[cat]&&guard++<300){
+      let it;
+      if(flip)it=mk(rnd(GOOD[cat]),rnd(FALL));
+      else if(Math.random()<.55)it=mk(rnd(BADK[cat]),rnd(ALLC));
+      else it=mk(rnd(GOOD[cat]),rnd(OFF));
+      if(add(it))flip=!flip;
+    }
+    shuffle(out[cat]);
+  }
+  return out;
+}
+function loadRound(){
+  const r=ROUNDS[S.round];
+  S.closet=buildCloset(r);S.tries=0;S.fb=null;S.outfit={top:null,bottom:null,shoes:null};
+  if(r.fix)for(const cat of ORDER){const f=r.fix[cat];if(f){const id=mk(f[0],f[1]).id;S.outfit[cat]=S.closet[cat].find(i=>i.id===id)}}
+  S.tab='top';
+  if(window.innerWidth<860)S.codeOpen=S.round===0;
+  renderGame();window.scrollTo({top:0,behavior:'smooth'});
+}
+function choose(it){
+  const cat=KINDS[it.kind].cat,o=S.outfit;
+  if(o[cat]&&o[cat].id===it.id)o[cat]=null;
+  else{o[cat]=it;if(it.kind==='dress')o.bottom=null;if(cat==='bottom'&&o.top&&o.top.kind==='dress')o.top=null}
+  tone([660],.06);
+  if(o[cat]&&!ROUNDS[S.round].fix){const next=ORDER.find(c=>!o[c]&&!(c==='bottom'&&o.top&&o.top.kind==='dress'));if(next)S.tab=next}
+  renderGame();
+}
+function renderGame(){
+  const r=ROUNDS[S.round],o=S.outfit,isDress=o.top&&o.top.kind==='dress';
+  const filled=c=>!!o[c]||(c==='bottom'&&isDress);
+  const items=S.closet[S.tab];
+  let note='';
+  if(S.tab==='bottom'&&isDress)note='You picked a dress, so no bottom is needed. Picking a bottom will take off the dress.';
+  else if(S.tab==='top')note='A dress counts as a top and a bottom.';
+  app.innerHTML=`<div class="game">
+    <section class="stagecol">
+      <div class="progress" aria-label="Progress">${ROUNDS.map((x,i)=>{const res=S.results[i];return`<span class="dot ${res?'done':''} ${i===S.round?'now':''}" title="${x.name}">${res?res.stars+'★':i+1}</span>`}).join('')}</div>
+      <div class="stage" id="stage"><div class="figwrap">${figure(r,o)}</div><div class="nameplate">${r.name}</div></div>
+      <div class="goal"><span class="eyebrow">${r.fix?'Fix-it challenge · ':''}Student ${S.round+1} of ${ROUNDS.length}</span><p>${r.goal}</p></div>
+    </section>
+    <section class="closetcol">
+      <details class="code" id="codeDet" ${S.codeOpen?'open':''}><summary>Concert dress code</summary>${codeBox()}</details>
+      <div class="closet">
+        <div class="tabs" role="tablist">${ORDER.map(c=>`<button class="tab" role="tab" type="button" data-tab="${c}" aria-selected="${S.tab===c}">${filled(c)?'<span class="tick">✓</span>':''}${CAT_LABEL[c]}</button>`).join('')}</div>
+        ${note?`<div class="note">${note}</div>`:''}
+        <div class="grid">${items.map(it=>`<button class="item" type="button" data-id="${it.id}" aria-pressed="${!!(o[S.tab]&&o[S.tab].id===it.id)}">${thumb(it)}<span>${label(it)}</span></button>`).join('')}</div>
+        <div class="checkrow"><button class="btn green" id="checkBtn" type="button">Ask the Music Teacher ✓</button></div>
+      </div>
+    </section>
+  </div>`;
+  app.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{S.tab=b.dataset.tab;tone([520],.05);renderGame()});
+  app.querySelectorAll('.item').forEach(b=>b.onclick=()=>choose(items.find(i=>i.id===b.dataset.id)));
+  document.getElementById('codeDet').addEventListener('toggle',e=>{S.codeOpen=e.target.open});
+  document.getElementById('checkBtn').onclick=check;
+  if(S.fb)showFeedback(S.fb);
+}
+function check(){
+  const r=ROUNDS[S.round],o=S.outfit,isDress=o.top&&o.top.kind==='dress';
+  const missing=[];
+  if(!o.top)missing.push('a top or a dress');
+  if(!isDress&&!o.bottom)missing.push('a bottom');
+  if(!o.shoes)missing.push('shoes');
+  if(missing.length){S.fb={missing};tone([392],.1);renderGame();return}
+  S.tries++;
+  const rows=piecesOf(o).map(it=>({it,ok:pieceOk(it),msg:pieceMsg(it)}));
+  const goal=r.check(o);
+  const ok=rows.every(x=>x.ok)&&goal.ok;
+  let stars=0;
+  if(ok){stars=S.tries===1?3:S.tries===2?2:1;S.results[S.round]={stars,outfit:{...o}};updateStars();tone([523,659,784,1047],.11)}
+  else tone([330,262],.15);
+  S.fb={rows,goal,ok,stars};
+  renderGame();
+  if(ok)leaves();
+}
+function showFeedback(fb){
+  const stage=document.getElementById('stage');
+  const el=document.createElement('div');el.className='fb';el.setAttribute('role','dialog');el.setAttribute('aria-label','Music Teacher feedback');
+  if(fb.missing){
+    el.innerHTML=`<h3>🎵 Not quite ready!</h3><p>Every student needs ${fb.missing.join(', ').replace(/, ([^,]*)$/,' and $1')}. Look in the closet tabs.</p><button class="btn" type="button" id="fbClose">Back to the closet</button>`;
+  }else{
+    const last=S.round===ROUNDS.length-1;
+    el.innerHTML=`<h3>🎵 ${fb.ok?'Concert-ready!':'Music Teacher says…'}</h3>
+      ${fb.ok?`<div class="bigstars" aria-label="${fb.stars} stars">${'★'.repeat(fb.stars)}<span class="off">${'★'.repeat(3-fb.stars)}</span></div>`:'<p style="margin:0">Read each note. Fix the pieces with an ✗.</p>'}
+      <ul class="rows">${fb.rows.map(x=>`<li class="row ${x.ok?'ok':'no'}">${thumb(x.it)}<div><span class="mark">${x.ok?'✓':'✗'} ${label(x.it)}</span><p>${x.msg}</p></div></li>`).join('')}
+        <li class="row ${fb.goal.ok?'ok':'no'}"><span class="gi" style="font-size:1.5rem;text-align:center">${fb.goal.ok?'😊':'🤔'}</span><div><span class="mark">${fb.goal.ok?'✓':'✗'} ${ROUNDS[S.round].name}'s request</span><p>${fb.goal.msg}</p></div></li></ul>
+      ${fb.ok?`<button class="btn green" type="button" id="fbNext">${last?'See my results':'Next student →'}</button>`:`<button class="btn" type="button" id="fbClose">Try again</button>`}`;
+  }
+  stage.appendChild(el);
+  const c=el.querySelector('#fbClose');if(c){c.onclick=()=>{S.fb=null;renderGame()};c.focus()}
+  const n=el.querySelector('#fbNext');if(n){n.onclick=()=>{S.fb=null;if(S.round<ROUNDS.length-1){S.round++;loadRound()}else endScreen()};n.focus()}
+}
+function leaves(){
+  const stage=document.getElementById('stage');if(!stage)return;
+  const cols=FALL.slice(0,7).map(k=>COLORS[k].hex);
+  for(let i=0;i<22;i++){const l=document.createElement('span');l.className='leaf';
+    l.style.left=(Math.random()*95)+'%';l.style.background=rnd(cols);l.style.animationDuration=(1.6+Math.random()*1.6)+'s';l.style.animationDelay=(Math.random()*.6)+'s';
+    stage.appendChild(l);setTimeout(()=>l.remove(),4000)}
+}
+function endScreen(){
+  const t=totalStars(),max=ROUNDS.length*3;
+  const msg=t>=27?'Wow! You read the dress code like a pro.':t>=20?'Great styling! You followed the dress code carefully.':'You dressed every student. Keep reading those labels closely!';
+  app.innerHTML=`<section class="panel cert">
+    <span class="eyebrow" style="color:var(--accent)">Grandparents Day Performance</span>
+    <div class="who">${S.name?S.name.replace(/</g,'&lt;'):'You'}</div>
+    <h2>Concert-Ready Stylist</h2>
+    <p class="bigstars" style="margin:10px 0 2px">★ ${t} / ${max}</p>
+    <p>${msg}</p>
+    <div class="gallery">${ROUNDS.map((r,i)=>{const res=S.results[i];return`<div class="gcard">${figure(r,res?res.outfit:{})}<b>${r.name}</b><span class="s">${'★'.repeat(res?res.stars:0)}</span></div>`}).join('')}</div>
+    <div class="checkrow" style="justify-content:center;max-width:420px;margin:18px auto 0"><button class="btn" type="button" id="againBtn">Play again</button></div>
+  </section>`;
+  tone([523,659,784,659,1047],.14);
+  document.getElementById('againBtn').onclick=startScreen;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+startScreen();
+</script>
+
+</body></html>
